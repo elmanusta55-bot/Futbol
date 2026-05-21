@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0b0f1a;
+    color: #f8fafc;
+}
+
+.glass {
+    background: rgba(22, 28, 45, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.live-pulse {
+    position: relative;
+}
+
+.live-pulse::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    left: -12px;
+    top: 6px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Mobil Menyusu */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 2.5px;
+    background: #10b981;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-menu-mobile {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: rgba(22, 28, 45, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    z-index: 40;
+}
+
+.nav-menu-mobile.active {
+    display: flex;
+}
+
+.nav-menu-mobile a,
+.nav-menu a {
+    color: #f8fafc;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-menu-mobile a:hover,
+.nav-menu a:hover {
+    color: #10b981;
+}
+
+.nav-menu a.active {
+    color: #10b981;
+}
+
+/* Bildirişlər */
+.notification {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: rgba(22, 28, 45, 0.95);
+    border: 2px solid #10b981;
+    color: #10b981;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: slideIn 0.4s ease;
+    max-width: 300px;
+    backdrop-filter: blur(12px);
+}
+
+.notification.goal {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.notification.info {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+.notification.hide {
+    animation: slideOut 0.4s ease;
+}
+
+.notification i {
+    font-size: 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
